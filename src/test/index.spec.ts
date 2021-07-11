@@ -7,7 +7,7 @@ describe('GET /', function(){
 		request(app).get('/test')
 								.expect(200)
 								.end(function(err, res){
-									if(err){ done(err) };
+									if(err){ done(err); };
 									done();
 								});
 	});
