@@ -1,0 +1,98 @@
+<%- include("./partials/header.ejs")%>
+<section id='events' class="layout-wrapper d-lg-flex flex-column mx-auto my-5 py-5 w-75 border rounded bg-light">
+    <h1 class="text-center col-sm mt-3">New Event</h1>
+    <form id='new-event-form' action="" class='form col-sm d-flex row'>
+        <div id='input-group' class="mb-3 m-auto w-75">
+            <label for="event-name">Name: </label>
+            <input class="input w-100" id="event-name" autocomplete="off" name='event-name' />
+        </div>
+        <div id='input-group' class="mb-3 m-auto w-75">
+            <label for="event-type">Event Type: </label>
+            <select value='paid' class="input w-100" id="event-type" name='event-type'>
+                <option value="" disabled selected>--Select Event Type--</option>
+                <option value="free">Free</option>
+                <option value="paid">Paid</option>
+            </select>
+        </div>
+        <div id='input-group' class="mb-3 m-auto w-75">
+            <label for="event-creator">Creator: </label>
+            <input class="input w-100" id="event-creator" autocomplete="off" name='event-creator' />
+        </div>
+        <div id='input-group' class="mb-3 m-auto w-75">
+            <!-- <label for="event-date">Date of Event: </label>
+            <input class="input w-100" id="event-date" autocomplete="off" name='event-date' type="datetime-local" min="2021-07-10T00:00" /> -->
+              <div class="nativeDateTimePicker">
+                <label for="event-date">Choose a date and time for your party:</label>
+                <input type="datetime-local" id="event-date" name="event-date">
+                <span class="validity"></span>
+              </div>
+              <p class="fallbackLabel">Choose a date and time for your party:</p>
+              <div class="fallbackDateTimePicker">
+                <div>
+                  <span>
+                    <label for="day">Day:</label>
+                    <select id="day" name="day">
+                    </select>
+                  </span>
+                  <span>
+                    <label for="month">Month:</label>
+                    <select id="month" name="month">
+                      <option selected>January</option>
+                      <option>February</option>
+                      <option>March</option>
+                      <option>April</option>
+                      <option>May</option>
+                      <option>June</option>
+                      <option>July</option>
+                      <option>August</option>
+                      <option>September</option>
+                      <option>October</option>
+                      <option>November</option>
+                      <option>December</option>
+                    </select>
+                  </span>
+                  <span>
+                    <label for="year">Year:</label>
+                    <select id="year" name="year">
+                    </select>
+                  </span>
+                </div>
+                <div>
+                  <span>
+                    <label for="hour">Hour:</label>
+                    <select id="hour" name="hour">
+                    </select>
+                  </span>
+                  <span>
+                    <label for="minute">Minute:</label>
+                    <select id="minute" name="minute">
+                    </select>
+                  </span>
+                </div>
+              </div>
+        </div>
+        <button type="submit" class="btn btn-primary mx-auto w-50" form="new-event-form"> Create Event </button>
+    </form>
+
+    <!-- Start Login Error Modal -->
+    <div class="modal fade" id="new-event-modal" tabindex="-1" role="dialog" aria-labelledby="new-event-modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title font-size-16" id="new-event-modal-title"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="mb-3">
+                        <p id='new-event-modal-body'></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Login Error Modal -->
+</section>
+<%- include("./partials/footer.ejs", { jsFile: 'new-event' })%>

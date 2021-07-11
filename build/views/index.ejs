@@ -1,0 +1,112 @@
+<%- include('./partials/header.ejs') %>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <div class="p-1 p-lg-4 border-top d-flex flex-column">
+    	<div>
+    		<a href="/auth/login">Login</a>
+    	</div>
+    	<div>
+    		<a href="/auth/signup">Signup</a>
+    	</div>
+    	<div>
+    		<a href="/event/new">New Event</a>
+    	</div>
+    	<div>
+    		<a href="/event/edit/1234">Edit Event</a>
+    	</div>
+    	<div>
+    		<a href="/events">Events</a>
+    	</div>
+    </div>
+    <!-- Start Send file Modal -->
+	<div class="modal fade" id="sendfile" tabindex="-1" role="dialog" aria-labelledby="sendfile" aria-hidden="true">
+	    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+	        <div class="modal-content">
+	            <form id="send-file-form" action="javascript:void(0);">
+	                <div class="modal-header">
+	                    <h5 class="modal-title font-size-16" id="addContact-exampleModalLabel">Send file confirmation</h5>
+	                    <button type="button" class=" btn-close sendfile-btn-close" data-bs-dismiss="modal" aria-label="Close">
+	                    </button>
+	                </div>
+	                <div class="modal-body p-4">
+	                    <div class="mb-3 mx-auto d-flex flex-row justify-content-between w-75 flex-wrap">
+	                        <p class="file-name"></p>
+	                        <p class="file-size"></p>
+	                    </div>
+	                </div>
+	                <div class="modal-footer">
+	                    <button type="button" class="btn btn-link" data-bs-dismiss="modal">No</button>
+	                    <button type="submit" class="btn btn-primary" form="send-file-form" id="send-file-submit-button">Yes, send</button>
+	                </div>
+	            </form>
+	        </div>
+	    </div>
+	</div>
+	<!-- End send file Modal -->
+
+	<!-- Start File to large Modal -->
+	<div class="modal fade" id="filetolarge" tabindex="-1" role="dialog" aria-labelledby="filetolarge" aria-hidden="true">
+	    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <h5 class="modal-title font-size-16" id="addContact-exampleModalLabel">File to large.</h5>
+	                <button type="button" class=" btn-close sendfile-btn-close" data-bs-dismiss="modal" aria-label="Close">
+	                </button>
+	            </div>
+	            <div class="modal-body p-4">
+	                <div class="mb-3 mx-auto d-flex flex-row justify-content-between w-75">
+	                    <p>Sorry the file <span class="file-name"></span>(<span class="file-size"></span>) you are trying to send exceeds the limit of 5MB you are allowed to send.</p>
+	                </div>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Okay</button>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<!-- End File to large Modal -->
+
+	<!-- Start Wrong File Type -->
+	<div class="modal fade" id="wrongFileType" tabindex="-1" role="dialog" aria-labelledby="wrongFileType" aria-hidden="true">
+	    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <h5 class="modal-title font-size-16" id="addContact-exampleModalLabel">This is a wrong file type</h5>
+	                <button type="button" class=" btn-close sendfile-btn-close" data-bs-dismiss="modal" aria-label="Close">
+	                </button>
+	            </div>
+	            <div class="modal-body p-4">
+	                <div class="mb-3 mx-auto d-flex flex-row justify-content-between w-75">
+	                    <p>Sorry the file <span class="file-name"></span>(<span class="file-size"></span>) you are trying to send is not the correct file type for this convertion, please select an excel .xlsx file.</p>
+	                </div>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Okay</button>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<!-- End Wrong File Type -->
+
+	<!-- Start Wrong Format -->
+	<div class="modal fade" id="wrongFormat" tabindex="-1" role="dialog" aria-labelledby="wrongFormat" aria-hidden="true">
+	    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <h5 class="modal-title font-size-16" id="addContact-exampleModalLabel">Wrong format</h5>
+	                <button type="button" class=" btn-close sendfile-btn-close" data-bs-dismiss="modal" aria-label="Close">
+	                </button>
+	            </div>
+	            <div class="modal-body p-4">
+	                <div class="mb-3 mx-auto d-flex flex-row justify-content-between w-75">
+	                    <p class="wrong-format-msg"></p>
+	                </div>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Okay</button>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<!-- End Wrong Format -->
+<%- include('./partials/footer.ejs', { jsFile: 'index' })%>
