@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { get, post, bodyValidator, controller, del, use } from './decorators/index';
 import mongoose from 'mongoose';
-import { upload, clearUploads } from '../middlewares';
+import { clearUploads } from '../middlewares';
 import {
 	Event,
 	RequestWithBody,

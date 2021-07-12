@@ -1,3 +1,12 @@
+interface JQuery{
+	tooltip(): void;
+	popover(): void;
+	magnificPopup(MagOptions): void;
+	modal(
+		setting?: string,
+		options?: { [key: string]: string | undefined }
+	): void;
+}
 class Signup {
 	signupData: { [key: string]: string } = {};
 	form: Element = document.querySelector('#signup-form');

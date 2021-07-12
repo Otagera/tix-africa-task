@@ -12,5 +12,4 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./bodyValidators"), exports);
 __exportStar(require("./clearUploadsFolder"), exports);
-__exportStar(require("./multer"), exports);
 //# sourceMappingURL=index.js.map

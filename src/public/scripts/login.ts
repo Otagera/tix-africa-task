@@ -1,3 +1,12 @@
+interface JQuery{
+	tooltip(): void;
+	popover(): void;
+	magnificPopup(MagOptions): void;
+	modal(
+		setting?: string,
+		options?: { [key: string]: string | undefined }
+	): void;
+}
 
 interface StorageUser {
 	username: string;

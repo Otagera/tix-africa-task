@@ -57,6 +57,9 @@ var RootController = /** @class */ (function () {
     RootController.prototype.getRootPage = function (req, res) {
         res.render('index', { title: 'Eventing Platform' });
     };
+    RootController.prototype.getTestPage = function (req, res) {
+        res.statusJson(200, { title: 'Eventing Platform' });
+    };
     RootController.prototype.getLoginPage = function (req, res) {
         res.render('login', { title: 'Eventing Platform' });
     };
@@ -124,6 +127,12 @@ var RootController = /** @class */ (function () {
         __metadata("design:paramtypes", [Object, Object]),
         __metadata("design:returntype", void 0)
     ], RootController.prototype, "getRootPage", null);
+    __decorate([
+        index_1.get('/test'),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object, Object]),
+        __metadata("design:returntype", void 0)
+    ], RootController.prototype, "getTestPage", null);
     __decorate([
         index_1.get('/auth/login'),
         __metadata("design:type", Function),
