@@ -13,11 +13,12 @@
                         <p>Creator: <%=events[i].creator%></p>
                     </div>
                     <div class="p-5">
-                        <a class="p-5" href="/event/edit/<%=events[i]._id%>">Edit</a>
-                        <p class="p-5">
                             <% if(Date.now() < new Date(events[i].timeOfEvent).getTime()){ %>
-                                Upcoming
+                                <a class="p-5" href="/event/edit/<%=events[i]._id%>">Edit</a>
+                                <p class="p-5">
+                                    Upcoming
                             <% }else{ %>
+                                <p class="p-5">
                                 Held
                             <% } %>
                         </p>
