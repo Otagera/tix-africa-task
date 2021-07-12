@@ -53,8 +53,8 @@ describe('GET /', function () {
             done();
         });
     });
-    it('should edit an event', function (done) {
-        supertest_1.default(app_1.app).put('/api/event/delete/60eb4890228829af0c93a22c')
+    it('should delete an event', function (done) {
+        supertest_1.default(app_1.app).delete('/api/event/delete/60ebf30328dd4a7e2c566d19')
             .send()
             .expect(200)
             .expect({ data: { message: 'Event deleted successfully', success: true }, statusCode: 200 })
