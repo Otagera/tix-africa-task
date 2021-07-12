@@ -114,6 +114,30 @@ var APIController = /** @class */ (function () {
             });
         });
     };
+    APIController.prototype.deleteEvent = function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var params, deletedEvent, data, error_3;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        params = req.params;
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, EventModel.findOneAndDelete({ _id: params.eventId })];
+                    case 2:
+                        deletedEvent = _a.sent();
+                        console.log(deletedEvent);
+                        data = { message: 'Event deleted successfully', success: true };
+                        return [2 /*return*/, res.statusJson(200, { data: data })];
+                    case 3:
+                        error_3 = _a.sent();
+                        return [2 /*return*/, res.statusJson(500, { error: error_3 })];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
     __decorate([
         index_1.post('/event/new'),
         index_1.bodyValidator('name', 'eventType', 'creator', 'timeOfEvent'),
@@ -122,12 +146,18 @@ var APIController = /** @class */ (function () {
         __metadata("design:returntype", Promise)
     ], APIController.prototype, "newEvent", null);
     __decorate([
-        index_1.post('/event/edit/:eventId'),
+        index_1.put('/event/edit/:eventId'),
         index_1.bodyValidator('name', 'eventType', 'creator', 'timeOfEvent'),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", [Object, Object]),
         __metadata("design:returntype", Promise)
     ], APIController.prototype, "editEvent", null);
+    __decorate([
+        index_1.del('/event/delete/:eventId'),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object, Object]),
+        __metadata("design:returntype", Promise)
+    ], APIController.prototype, "deleteEvent", null);
     APIController = __decorate([
         index_1.controller('/api')
     ], APIController);

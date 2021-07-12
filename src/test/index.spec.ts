@@ -24,10 +24,10 @@ describe('GET /', function(){
 								.end(function(err, res){
 									if(err){ done(err); };
 									done();
-								})
+								});
 	});
 	it('should edit an event', function(done){
-		request(app).post('/api/event/edit/60eb4890228829af0c93a22c')
+		request(app).put('/api/event/edit/60eb4890228829af0c93a22c')
 								.send({
 									name: 'Test Event 1',
 									eventType: 'paid',
@@ -39,7 +39,17 @@ describe('GET /', function(){
 								.end(function(err, res){
 									if(err){ done(err); };
 									done();
-								})
+								});
+	});							
+	it('should delete an event', function(done){
+		request(app).delete('/api/event/delete/60ebf30328dd4a7e2c566d19')
+								.send()
+								.expect(200)
+								.expect({ data: { message: 'Event deleted successfully', success: true }, statusCode: 200 })
+								.end(function(err, res){
+									if(err){ done(err); };
+									done();
+								});
 	});
 });
 //C:\source\Web\Jobs\tix-africa-task

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { get, post, bodyValidator, controller, del, use } from './decorators/index';
+import { get, post, put, bodyValidator, controller, del, use } from './decorators/index';
 import mongoose from 'mongoose';
 import { clearUploads } from '../middlewares';
 import {
@@ -31,7 +31,8 @@ class APIController {
 			return res.statusJson(500, { error });
 		}
 	}
-	@post('/event/edit/:eventId')
+
+	@put('/event/edit/:eventId')
 	@bodyValidator('name', 'eventType', 'creator', 'timeOfEvent')
 	async editEvent(req: RequestWithBody, res: Response){
 		const { body, params } = req;
@@ -47,6 +48,20 @@ class APIController {
 			console.log(updatedEvent);
 
 			const data = { message: 'Event updated successfully', success: true };
+			return res.statusJson(200, { data: data });
+		}catch(error){
+			return res.statusJson(500, { error });
+		}
+	}
+
+	@del('/event/delete/:eventId')
+	async deleteEvent(req: Request, res: Response){
+		const { params } = req;
+		try{
+			const deletedEvent = await EventModel.findOneAndDelete({ _id: params.eventId });
+			console.log(deletedEvent);
+
+			const data = { message: 'Event deleted successfully', success: true };
 			return res.statusJson(200, { data: data });
 		}catch(error){
 			return res.statusJson(500, { error });

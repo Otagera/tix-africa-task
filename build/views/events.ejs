@@ -1,6 +1,9 @@
 <%- include("./partials/header.ejs")%>
 <section id='events' class="layout-wrapper d-lg-flex flex-column mx-auto my-5 py-5 w-75 border rounded bg-light">
-    <h1 class="text-center col-sm mt-3">Events</h1>
+    <div class="text-center col-sm mt-3 d-flex flex-row justify-content-between">
+        <h1 class="text-center col-sm mt-3">Events</h1>
+        <a class="text-center col-sm mt-3" href="/event/new">Add New Event</a>
+    </div>
     <div>
         <ul>
             <%for(let i = 0; i < events.length; i++){ %>
@@ -12,10 +15,13 @@
                         <p>Event Type: <%=events[i].eventType%></p>
                         <p>Creator: <%=events[i].creator%></p>
                     </div>
-                    <div class="p-5">
+                    <div class="p-1 d-flex flex-column text-center">
                             <% if(Date.now() < new Date(events[i].timeOfEvent).getTime()){ %>
-                                <a class="p-5" href="/event/edit/<%=events[i]._id%>">Edit</a>
-                                <p class="p-5">
+                                <a class="p-1" href="/event/edit/<%=events[i]._id%>">Edit</a>
+                                <button class="text-bold px-5 my-5 text-primary btn event-delete-btn" data-id="<%=events[i]._id%>">
+                                    Delete
+                                </button>
+                                <p class="p-1">
                                     Upcoming
                             <% }else{ %>
                                 <p class="p-5">
@@ -30,16 +36,16 @@
     </div>
 
     <!-- Start Login Error Modal -->
-    <div class="modal fade" id="login-error" tabindex="-1" role="dialog" aria-labelledby="login-error" aria-hidden="true">
+    <div class="modal fade" id="events-modal" tabindex="-1" role="dialog" aria-labelledby="events-modal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title font-size-16" id="addContact-exampleModalLabel">Login Not Successful</h5>
+                    <h5 class="modal-title font-size-16" id="events-modal-title"></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-4">
                     <div class="mb-3">
-                        <p>Username/Password is incorrect, please check and retry again.</p>
+                        <p id='events-modal-body'></p>
                     </div>
                 </div>
                 <div class="modal-footer">

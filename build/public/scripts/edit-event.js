@@ -206,7 +206,10 @@ var EditEvent = /** @class */ (function () {
             document.body.removeChild(addModalBtn);
         };
         this.editEventRequest = function () {
-            $.post("/api/event/edit/" + window.location.pathname.split('/')[3], _this.editEventData)
+            $.ajax("/api/event/edit/" + window.location.pathname.split('/')[3], {
+                data: _this.editEventData,
+                method: 'PUT'
+            })
                 .done(function (response) {
                 if (response.statusCode === 200) {
                     _this.showModal(true, response.data.message);

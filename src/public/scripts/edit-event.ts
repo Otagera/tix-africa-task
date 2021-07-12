@@ -242,7 +242,10 @@ class EditEvent {
 	}
 
 	editEventRequest = (): void =>{
-		$.post(`/api/event/edit/${window.location.pathname.split('/')[3]}`, this.editEventData)
+		$.ajax(`/api/event/edit/${window.location.pathname.split('/')[3]}`, {
+			data: this.editEventData,
+			method: 'PUT'
+		})
 		 .done(response=>{
 		 	if(response.statusCode === 200){
 		 		this.showModal(true, response.data.message);
@@ -250,7 +253,8 @@ class EditEvent {
 		 }).fail(err=>{
 	 		this.showModal(false, 'Something went wrong');
 		 	console.log(err);
-		 });}
+		 });
+	}
 }
 
 const editEvent = new EditEvent();

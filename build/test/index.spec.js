@@ -36,7 +36,7 @@ describe('GET /', function () {
         });
     });
     it('should edit an event', function (done) {
-        supertest_1.default(app_1.app).post('/api/event/edit/60eb4890228829af0c93a22c')
+        supertest_1.default(app_1.app).put('/api/event/edit/60eb4890228829af0c93a22c')
             .send({
             name: 'Test Event 1',
             eventType: 'paid',
@@ -45,6 +45,19 @@ describe('GET /', function () {
         })
             .expect(200)
             .expect({ data: { message: 'Event updated successfully', success: true }, statusCode: 200 })
+            .end(function (err, res) {
+            if (err) {
+                done(err);
+            }
+            ;
+            done();
+        });
+    });
+    it('should edit an event', function (done) {
+        supertest_1.default(app_1.app).put('/api/event/delete/60eb4890228829af0c93a22c')
+            .send()
+            .expect(200)
+            .expect({ data: { message: 'Event deleted successfully', success: true }, statusCode: 200 })
             .end(function (err, res) {
             if (err) {
                 done(err);
