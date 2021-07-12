@@ -6,7 +6,7 @@
     "start:build": "tsc -w",
     "start:run": "nodemon build/app.js",
     "start": "concurrently npm:start:*",
-    "postinstall": "npm run start:build",
+    "postinstall": "tsc",
     "test": "mocha -r ts-node/register src/**/*.spec.ts -w"
   },
   "dependencies": {
